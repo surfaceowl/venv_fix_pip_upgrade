@@ -9,9 +9,12 @@ Most of the community comments are linux specific, so common suggestions you'll 
 + `pip install --upgrade pip`
 + `python -m pip install --upgrade pip`
 + ...some variation of "use easy_install"
++ upgrading from within your IDE such as PyCharm
 + ...or more rarely:  `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`
 
 ###These work perfectly outside of virtual environments, but in some environments they do not - and there are some traps for the unwary.  Spoiler alert - the last suggestion is our best hope
+
+Try these from either the Windows Command Prompt (`cmd`) or Windows PowerShell: 
 
 1. Old faithful:  `pip install --upgrade pip` fails with:
 ```ERROR: To modify pip, please run the following command:
@@ -60,7 +63,7 @@ AttributeError: 'NoneType' object has no attribute 'bytes'
 
 4. So we stumble around some more, and find this fourth option `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`, but we may be blocked by this fail:
 
-Windows Powershell cannot execute the curl command 
+Windows cannot execute the curl command 
 ```(venv) > curl https://bootstrap.pypa.io/get-pip.py
 curl : The request was aborted: Could not create SSL/TLS secure channel.
 At line:1 char:1
@@ -73,14 +76,14 @@ At line:1 char:1
 Drats!  Sounds scary, but luckily, [this post](https://powershell.org/forums/topic/is-it-possible-to-enable-tls-1-2-as-default-in-powershell/) shows us this is merely an issue with old windows TLS settings not being secure enough for what the Python Software Foundation is using... this is an easy fix.
 1- There is a PowerShell command we can use to temporarily upgrade the TLS version that PowerShell is using behinds the scenes.  Paste the command into your PowerShell terminal and hit enter:  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
 
-2- Nothing visible happens except PowerShell moves down one command prompt.  Next:
+2- Nothing visible happens except Windows Command Prompt or PowerShell moves down one command prompt.  Next:
 
-3- Paste the first part of the curl command into Powershell:  ` curl https://bootstrap.pypa.io/get-pip.py` (everything before the "-o")
+3- Navigate to the root folder of your project, and paste the entire curl command into PowerShell:  `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py` (everything before the "-o")
 
-4- PowerShell with download the get-pip.py file
+4- Windows will download the get-pip.py file
 
-5- From PowerShell, run get-pip.py with the version number you want (e.g. 18.1):  python get-pip.py pip==18.1
-...and you should see
+5- From PowerShell, run get-pip.py with the version number you want (e.g. 18.1), with this command: `python get-pip.py pip==18.1`:
+...and you should see:
 ```
 (venv) > python get-pip.py pip==18.1
 Collecting pip==18.1
