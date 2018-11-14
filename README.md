@@ -74,16 +74,17 @@ At line:1 char:1
 ```
 
 Drats!  Sounds scary, but luckily, [this post](https://powershell.org/forums/topic/is-it-possible-to-enable-tls-1-2-as-default-in-powershell/) shows us this is merely an issue with old windows TLS settings not being secure enough for what the Python Software Foundation is using... this is an easy fix.
-1- There is a PowerShell command we can use to temporarily upgrade the TLS version that PowerShell is using behinds the scenes.  Paste the command into your PowerShell terminal and hit enter:  [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
+1- There is a PowerShell command we can use to temporarily upgrade the TLS version that PowerShell is using behinds the scenes.  Paste the command into your PowerShell terminal and hit enter:  `[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;`
 
-2- Nothing visible happens except Windows Command Prompt or PowerShell moves down one command prompt.  Next:
+2- Nothing visible happens except Windows Command Prompt or PowerShell moves down one command prompt.
 
-3- Navigate to the root folder of your project, and paste the entire curl command into PowerShell:  `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py` (everything before the "-o")
+3- Next, navigate to the root folder of your project, and paste this entire curl command into PowerShell:  `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py`
 
-4- Windows will download the get-pip.py file
+4- Windows will download the get-pip.py file, which you should see in your directory.
 
-5- From PowerShell, run get-pip.py with the version number you want (e.g. 18.1), with this command: `python get-pip.py pip==18.1`:
-...and you should see:
+5- From PowerShell, run get-pip.py with the version number you want to install (e.g. 18.1), with this command: `python get-pip.py pip==18.1`
+
+_...and you should see this output in your shell:_
 ```
 (venv) > python get-pip.py pip==18.1
 Collecting pip==18.1
