@@ -82,27 +82,27 @@ Drats!  Sounds scary, but luckily, [this post](https://powershell.org/forums/top
 
 4- Windows will download the get-pip.py file, which you should see in your directory.
 
-5- From PowerShell, run get-pip.py with the version number you want to install (e.g. 19.0.1 - latest as of this writing), with this command: `python get-pip.py pip==19.0.1`
+5- From PowerShell, run get-pip.py with the version number you want to install (e.g. 19.0.3 - latest as of this writing), with this command: `python get-pip.py pip==19.0.3`
 
 _...and you should see this output in your shell:_
 ```
-(venv) > python get-pip.py pip==19.0.1
-Collecting pip==19.0.1
-  Using cached https://files.pythonhosted.org/packages/46/dc/7fd5df840efb3e56c8b4f768793a237ec4ee59891959d6a215d63f727023/pip-19.0.1-py2.py3-none-any.whl
+(venv) > python get-pip.py pip==19.0.3
+Collecting pip==19.0.3
+  Using cached https://files.pythonhosted.org/packages/46/dc/7fd5df840efb3e56c8b4f768793a237ec4ee59891959d6a215d63f727023/pip-19.0.3-py2.py3-none-any.whl
 Collecting wheel
   Using cached https://files.pythonhosted.org/packages/5a/9b/6aebe9e2636d35d1a93772fa644c828303e1d5d124e8a88f156f42ac4b87/wheel-0.32.2-py2.py3-none-any.whl
 Installing collected packages: pip, wheel
   Found existing installation: pip 18.1
     Uninstalling pip-18.1:
       Successfully uninstalled pip-18.1
-Successfully installed pip-19.0.1 wheel-0.32.2
+Successfully installed pip-19.0.3 wheel-0.32.2
 (venv) >
 
 ```  
 6- To make sure it's working, type "pip -V", and you should see something like below, showing the upgraded version number.
 ```
 (venv) > pip -V
-pip 19.0.1 from ..\my path to my venv\lib\site-packages\pip (python 3.7)
+pip 19.0.3 from ..\my path to my venv\lib\site-packages\pip (python 3.7)
 (venv) >
 
 ```
